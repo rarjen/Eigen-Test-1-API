@@ -9,19 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Transactions.belongsTo(models.Members, {
-        foreignKey: "member_code",
+        foreignKey: "member_id",
         as: "member",
       });
       Transactions.belongsTo(models.Books, {
-        foreignKey: "book_code",
+        foreignKey: "book_id",
         as: "book",
       });
     }
   }
   Transactions.init(
     {
-      member_code: DataTypes.STRING,
-      book_code: DataTypes.STRING,
+      member_id: DataTypes.INTEGER,
+      book_id: DataTypes.INTEGER,
       status_penalty: DataTypes.INTEGER,
       date_borrowed: DataTypes.DATE,
       date_returned: DataTypes.DATE,
