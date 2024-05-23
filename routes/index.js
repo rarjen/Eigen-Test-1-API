@@ -3,6 +3,7 @@ const responseHandler = require("../helpers/responseHandler");
 
 const member = require("./members");
 const book = require("./books");
+const transaction = require("./transaction");
 
 // Router Test
 router.get("/test", (req, res) => {
@@ -11,5 +12,6 @@ router.get("/test", (req, res) => {
 
 router.use("/members", member);
 router.use("/books", book);
+router.use("/transaction", transaction);
 
 module.exports = router;
