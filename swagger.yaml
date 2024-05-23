@@ -1,0 +1,589 @@
+openapi: 3.1.0
+x-stoplight:
+  id: rmscmdh9f80yp
+info:
+  title: API Documentation Library (Eigen Test)
+  version: "1.0"
+  description: "This is the API Documentation for Eigen Test "
+servers:
+  - url: "http://localhost:3000"
+    description: Local Server
+paths:
+  /members:
+    get:
+      summary: Get All Member
+      operationId: get-member
+      responses:
+        "200":
+          description: OK
+        "":
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        code:
+                          type: string
+                        name:
+                          type: string
+                        createdAt:
+                          type: string
+                        updatedAt:
+                          type: string
+                        transactions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              member_id:
+                                type: integer
+                              book_id:
+                                type: integer
+                              status_penalty:
+                                type: integer
+                              date_borrowed:
+                                type: string
+                              date_returned:
+                                type:
+                                  - "null"
+                                  - string
+                              status_pinjam:
+                                type: integer
+                              createdAt:
+                                type: string
+                              updatedAt:
+                                type: string
+                              book:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  code:
+                                    type: string
+                                  title:
+                                    type: string
+                                  author:
+                                    type: string
+                                  stock:
+                                    type: integer
+                                  createdAt:
+                                    type: string
+                                  updatedAt:
+                                    type: string
+                x-examples:
+                  Example 1:
+                    code: 200
+                    message: Success get members
+                    data:
+                      - id: 3
+                        code: M003
+                        name: Putri
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                        transactions: []
+                      - id: 2
+                        code: M002
+                        name: Ferry
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                        transactions:
+                          - id: 5
+                            member_id: 2
+                            book_id: 2
+                            status_penalty: 0
+                            date_borrowed: "2024-05-23T00:02:07.000Z"
+                            date_returned: null
+                            status_pinjam: 1
+                            createdAt: "2024-05-23T00:02:07.000Z"
+                            updatedAt: "2024-05-23T00:02:07.000Z"
+                            book:
+                              id: 2
+                              code: SHR-1
+                              title: A Study in Scarlet
+                              author: Arthur Conan Doyle
+                              stock: 0
+                              createdAt: "2024-05-22T23:44:27.000Z"
+                              updatedAt: "2024-05-23T00:02:07.000Z"
+                      - id: 1
+                        code: M001
+                        name: Angga
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                        transactions:
+                          - id: 6
+                            member_id: 1
+                            book_id: 4
+                            status_penalty: 0
+                            date_borrowed: "2024-05-23T00:03:53.000Z"
+                            date_returned: null
+                            status_pinjam: 1
+                            createdAt: "2024-05-23T00:03:53.000Z"
+                            updatedAt: "2024-05-23T00:03:53.000Z"
+                            book:
+                              id: 4
+                              code: HOB-83
+                              title: "The Hobbit, or There and Back Again"
+                              author: J.R.R. Tolkien
+                              stock: 0
+                              createdAt: "2024-05-22T23:44:27.000Z"
+                              updatedAt: "2024-05-23T00:03:53.000Z"
+                          - id: 1
+                            member_id: 1
+                            book_id: 1
+                            status_penalty: 0
+                            date_borrowed: "2024-05-23T06:44:53.000Z"
+                            date_returned: "2024-05-23T07:03:08.000Z"
+                            status_pinjam: 0
+                            createdAt: "2024-05-23T01:44:53.000Z"
+                            updatedAt: "2024-05-23T01:44:53.000Z"
+                            book:
+                              id: 1
+                              code: JK-45
+                              title: Harry Potter
+                              author: J.K Rowling
+                              stock: 1
+                              createdAt: "2024-05-22T23:44:27.000Z"
+                              updatedAt: "2024-05-22T23:44:27.000Z"
+              examples:
+                Success:
+                  value:
+                    code: 200
+                    message: Success get members
+                    data:
+                      - id: 3
+                        code: M003
+                        name: Putri
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                        transactions: []
+                      - id: 2
+                        code: M002
+                        name: Ferry
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                        transactions:
+                          - id: 5
+                            member_id: 2
+                            book_id: 2
+                            status_penalty: 0
+                            date_borrowed: "2024-05-23T00:02:07.000Z"
+                            date_returned: null
+                            status_pinjam: 1
+                            createdAt: "2024-05-23T00:02:07.000Z"
+                            updatedAt: "2024-05-23T00:02:07.000Z"
+                            book:
+                              id: 2
+                              code: SHR-1
+                              title: A Study in Scarlet
+                              author: Arthur Conan Doyle
+                              stock: 0
+                              createdAt: "2024-05-22T23:44:27.000Z"
+                              updatedAt: "2024-05-23T00:02:07.000Z"
+                      - id: 1
+                        code: M001
+                        name: Angga
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                        transactions:
+                          - id: 6
+                            member_id: 1
+                            book_id: 4
+                            status_penalty: 0
+                            date_borrowed: "2024-05-23T00:03:53.000Z"
+                            date_returned: null
+                            status_pinjam: 1
+                            createdAt: "2024-05-23T00:03:53.000Z"
+                            updatedAt: "2024-05-23T00:03:53.000Z"
+                            book:
+                              id: 4
+                              code: HOB-83
+                              title: "The Hobbit, or There and Back Again"
+                              author: J.R.R. Tolkien
+                              stock: 0
+                              createdAt: "2024-05-22T23:44:27.000Z"
+                              updatedAt: "2024-05-23T00:03:53.000Z"
+                          - id: 1
+                            member_id: 1
+                            book_id: 1
+                            status_penalty: 0
+                            date_borrowed: "2024-05-23T06:44:53.000Z"
+                            date_returned: "2024-05-23T07:03:08.000Z"
+                            status_pinjam: 0
+                            createdAt: "2024-05-23T01:44:53.000Z"
+                            updatedAt: "2024-05-23T01:44:53.000Z"
+                            book:
+                              id: 1
+                              code: JK-45
+                              title: Harry Potter
+                              author: J.K Rowling
+                              stock: 1
+                              createdAt: "2024-05-22T23:44:27.000Z"
+                              updatedAt: "2024-05-22T23:44:27.000Z"
+          description: Success Get All Members
+      tags:
+        - Member
+      description: This endpoint will show all member and the books they are borrowed
+    parameters: []
+  /books:
+    get:
+      summary: Get All Member
+      operationId: get-member
+      responses:
+        "200":
+          description: OK
+        "":
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        code:
+                          type: string
+                        title:
+                          type: string
+                        author:
+                          type: string
+                        stock:
+                          type: integer
+                        createdAt:
+                          type: string
+                        updatedAt:
+                          type: string
+                x-examples:
+                  Example 1:
+                    code: 200
+                    message: Success get books
+                    data:
+                      - id: 1
+                        code: JK-45
+                        title: Harry Potter
+                        author: J.K Rowling
+                        stock: 1
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                      - id: 3
+                        code: TW-11
+                        title: Twilight
+                        author: Stephenie Meyer
+                        stock: 1
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                      - id: 5
+                        code: NRN-7
+                        title: "The Lion, the Witch and the Wardrobe"
+                        author: C.S. Lewis
+                        stock: 1
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+              examples:
+                Success:
+                  value:
+                    code: 200
+                    message: Success get books
+                    data:
+                      - id: 1
+                        code: JK-45
+                        title: Harry Potter
+                        author: J.K Rowling
+                        stock: 1
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                      - id: 3
+                        code: TW-11
+                        title: Twilight
+                        author: Stephenie Meyer
+                        stock: 1
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+                      - id: 5
+                        code: NRN-7
+                        title: "The Lion, the Witch and the Wardrobe"
+                        author: C.S. Lewis
+                        stock: 1
+                        createdAt: "2024-05-22T23:44:27.000Z"
+                        updatedAt: "2024-05-22T23:44:27.000Z"
+          description: Success Get All Books
+      description: This endpoint will only show available book
+      tags:
+        - Books
+    parameters: []
+  /transactions:
+    parameters: []
+    post:
+      summary: Create Transaction
+      operationId: post-transactions
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      result:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          member_id:
+                            type: integer
+                          book_id:
+                            type: integer
+                          status_penalty:
+                            type: integer
+                          status_pinjam:
+                            type: integer
+                          date_borrowed:
+                            type: string
+                          updatedAt:
+                            type: string
+                          createdAt:
+                            type: string
+                      updateStockBook:
+                        type: array
+                        items:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    code: 201
+                    message: Success create transaction
+                    data:
+                      result:
+                        id: 6
+                        member_id: 1
+                        book_id: 4
+                        status_penalty: 0
+                        status_pinjam: 1
+                        date_borrowed: "2024-05-23T00:03:53.657Z"
+                        updatedAt: "2024-05-23T00:03:53.657Z"
+                        createdAt: "2024-05-23T00:03:53.657Z"
+                      updateStockBook:
+                        - 1
+              examples:
+                Transaction success:
+                  value:
+                    code: 201
+                    message: Success create transaction
+                    data:
+                      result:
+                        id: 6
+                        member_id: 1
+                        book_id: 4
+                        status_penalty: 0
+                        status_pinjam: 1
+                        date_borrowed: "2024-05-23T00:03:53.657Z"
+                        updatedAt: "2024-05-23T00:03:53.657Z"
+                        createdAt: "2024-05-23T00:03:53.657Z"
+                      updateStockBook:
+                        - 1
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  errors:
+                    type: object
+                    properties: {}
+                x-examples:
+                  Example 1:
+                    code: 400
+                    message: Buku tidak tersedia
+                    errors: {}
+              examples:
+                Response If book is not available:
+                  value:
+                    code: 400
+                    message: Buku tidak tersedia
+                    errors: {}
+                Response if member already borrow a book:
+                  value:
+                    code: 400
+                    message: Peminjaman buku maksimal 1
+                    errors: {}
+                Response if member got a penalty:
+                  value:
+                    code: 400
+                    message: Anda sedang mendapatkan penalty 3 hari
+                    errors: {}
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  errors:
+                    type: object
+                    properties: {}
+                x-examples:
+                  Example 1:
+                    code: 404
+                    message: Data buku tidak ditemukan!
+                    errors: {}
+              examples:
+                "Response if book is not found ":
+                  value:
+                    code: 404
+                    message: Data buku tidak ditemukan!
+                    errors: {}
+                Response if member haven't been registered yet:
+                  value:
+                    code: 404
+                    message: Pengguna belum terdaftar!
+                    errors: {}
+      tags:
+        - Transactions
+      description: This endpoint will create transaction for member that will borrow some book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                member_code:
+                  type: string
+                book_code:
+                  type: string
+              x-examples:
+                Example 1:
+                  member_code: M001
+                  book_code: HOB-83
+            examples:
+              Body:
+                value:
+                  member_code: M001
+                  book_code: HOB-83
+        description: "The body request only require 2 fields: "
+    patch:
+      summary: Update Transaction
+      operationId: patch-transactions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      result:
+                        type: array
+                        items:
+                          type: integer
+                      updateStockBook:
+                        type: array
+                        items:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    code: 200
+                    message: Success return book!
+                    data:
+                      result:
+                        - 1
+                      updateStockBook:
+                        - 1
+              examples:
+                Example 1:
+                  value:
+                    code: 200
+                    message: Success return book!
+                    data:
+                      result:
+                        - 1
+                      updateStockBook:
+                        - 1
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  errors:
+                    type: object
+                    properties: {}
+                x-examples:
+                  Example 1:
+                    code: 404
+                    message: Transaksi tidak ditemukan
+                    errors: {}
+              examples:
+                Response if traansaction not found:
+                  value:
+                    code: 404
+                    message: Transaksi tidak ditemukan
+                    errors: {}
+      description: This endpoint will update stock book if book has returned
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_returned:
+                  type: string
+              x-examples:
+                Example 1:
+                  date_returned: "2024-05-23"
+            examples:
+              Example 1:
+                value:
+                  date_returned: "2024-05-23"
+        description: This field is optional because if member/admin click return the system will automatically get current date
+      tags:
+        - Transactions
+components:
+  schemas: {}
+x-internal: false
