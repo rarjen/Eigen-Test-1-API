@@ -48,3 +48,12 @@ Make sure you have the following installed:
 1. ```bash
    npm run dev
    ```
+
+### Access Documentation
+
+**To access swagger documentation, open browser and type:**
+
+````bash
+    http://localhost:3000/api-docs
+    ```
+````
