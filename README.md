@@ -2,7 +2,7 @@
 
 ## Description
 
-A brief description of what this project does and who it's for.
+This project is used for the entry test for Eigen company. It demonstrates my ability to build a web application with modern technologies.
 
 ## Getting Started
 
