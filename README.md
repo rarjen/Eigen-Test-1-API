@@ -29,3 +29,21 @@ Make sure you have the following installed:
    ```bash
    npm install
    ```
+
+### Database Setup
+
+1. **Run the migrations:**
+   ```bash
+   npx sequelize-cli db:migrate
+   ```
+2. **Run the seeders:**
+   ```bash
+   npx sequelize-cli db:seed:all
+   ```
+
+### Usage
+
+**To start the development server:**
+`bash
+    npm run dev
+    `
