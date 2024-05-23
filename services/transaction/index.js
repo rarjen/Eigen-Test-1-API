@@ -21,14 +21,22 @@ const createTransaction = async (req) => {
   }
 
   // Melakukan checking Transaction
-  const checkTransaction = await Transactions.findOne({
+  const checkTransactions = await Transactions.findAll({
     where: { member_id: checkMember.id },
   });
-  if (checkTransaction && !checkTransaction.date_returned) {
+  const hasUnreturnedBook = checkTransactions.some(
+    (transaction) => !transaction.date_returned
+  );
+  if (hasUnreturnedBook) {
     throw ApiError.badRequest("Peminjaman buku maksimal 1");
   }
-  if (checkTransaction && checkTransaction.status_penalty === 1) {
-    throw ApiError.badRequest("Anda sedang medapatkan penalty 3 hari");
+
+  // Mengecek apakah ada transaksi dengan status penalty
+  const hasPenalty = checkTransactions.some(
+    (transaction) => transaction.status_penalty === 1
+  );
+  if (hasPenalty) {
+    throw ApiError.badRequest("Anda sedang mendapatkan penalty 3 hari");
   }
 
   // Melakukan create Transactions
@@ -50,7 +58,7 @@ const createTransaction = async (req) => {
 };
 
 const updateTransaction = async (req) => {
-  const { date_returned } = req.body;
+  const { date_returned = new Date() } = req.body;
   let status_penalty = 0;
 
   const checkTransactions = await Transactions.findOne({
@@ -75,12 +83,12 @@ const updateTransaction = async (req) => {
   );
 
   const checkBook = await Books.findOne({
-    where: { book_code: checkTransactions.book_code },
+    where: { id: checkTransactions.book_id },
   });
 
   const updateStockBook = await Books.update(
     { stock: checkBook.stock + 1 },
-    { where: { book_code: checkTransactions.book_code } }
+    { where: { id: checkTransactions.book_id } }
   );
 
   return { result, updateStockBook };
