@@ -1,4 +1,7 @@
-const { createTransaction } = require("../../services/transaction");
+const {
+  createTransaction,
+  updateTransaction,
+} = require("../../services/transaction");
 const responseHandler = require("../../helpers/responseHandler");
 
 const create = async (req, res, next) => {
@@ -11,4 +14,14 @@ const create = async (req, res, next) => {
   }
 };
 
-module.exports = { create };
+const update = async (req, res, next) => {
+  try {
+    const result = await updateTransaction(req);
+
+    return responseHandler.succes(res, "Success return book!", result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { create, update };
