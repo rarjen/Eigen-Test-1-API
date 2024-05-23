@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      member_code: {
-        type: Sequelize.STRING,
+      member_id: {
+        type: Sequelize.INTEGER,
       },
-      book_code: {
-        type: Sequelize.STRING,
+      book_id: {
+        type: Sequelize.INTEGER,
       },
       status_penalty: {
         type: Sequelize.INTEGER,
