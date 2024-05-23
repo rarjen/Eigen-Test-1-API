@@ -21,6 +21,8 @@
     "morgan": "^1.10.0",
     "sequelize": "^6.37.1",
     "socket.io": "^4.7.5",
-    "url-parse": "^1.5.10"
+    "swagger-ui-express": "^5.0.0",
+    "url-parse": "^1.5.10",
+    "yamljs": "^0.3.0"
   }
 }
