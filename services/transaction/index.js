@@ -5,7 +5,7 @@ const createTransaction = async (req) => {
   const { member_code, book_code } = req.body;
 
   // Melakukan checking Book
-  const checkBook = await Books.findOne({ where: { book_code } });
+  const checkBook = await Books.findOne({ where: { code: book_code } });
 
   if (!checkBook) {
     throw ApiError.notFound("Data buku tidak ditemukan!");
@@ -15,34 +15,35 @@ const createTransaction = async (req) => {
   }
 
   // Melakukan checking Member
-  const checkMember = await Members.findOne({ where: { member_code } });
+  const checkMember = await Members.findOne({ where: { code: member_code } });
   if (!checkMember) {
     throw ApiError.notFound("Pengguna belum terdaftar!");
   }
 
   // Melakukan checking Transaction
   const checkTransaction = await Transactions.findOne({
-    where: { member_code },
+    where: { member_id: checkMember.id },
   });
   if (checkTransaction && !checkTransaction.date_returned) {
     throw ApiError.badRequest("Peminjaman buku maksimal 1");
   }
-  if (checkTransaction.status_penalty === 1) {
+  if (checkTransaction && checkTransaction.status_penalty === 1) {
     throw ApiError.badRequest("Anda sedang medapatkan penalty 3 hari");
   }
 
   // Melakukan create Transactions
   const result = await Transactions.create({
-    member_code,
-    book_code,
+    member_id: checkMember.id,
+    book_id: checkBook.id,
     status_penalty: 0,
+    status_pinjam: 1,
     date_borrowed: new Date(),
   });
 
   // Melakukan update Stock
   const updateStockBook = await Books.update(
     { stock: checkBook.stock - 1 },
-    { where: { book_code } }
+    { where: { code: book_code } }
   );
 
   return { result, updateStockBook };
