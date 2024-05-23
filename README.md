@@ -45,15 +45,14 @@ Make sure you have the following installed:
 
 **To start the development server, run:**
 
-1. ```bash
+```bash
    npm run dev
-   ```
+```
 
 ### Access Documentation
 
 **To access swagger documentation, open browser and type:**
 
-````bash
+```bash
     http://localhost:3000/api-docs
-    ```
-````
+```
