@@ -43,7 +43,8 @@ Make sure you have the following installed:
 
 ### Usage
 
-**To start the development server:**
-`bash
-    npm run dev
-    `
+**To start the development server, run:**
+
+1. ```bash
+   npm run dev
+   ```
